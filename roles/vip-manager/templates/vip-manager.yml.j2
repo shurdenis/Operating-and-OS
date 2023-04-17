@@ -1,0 +1,30 @@
+
+
+interval: 1000
+
+
+trigger-key: "/service/{{ system_name }}/leader"
+
+trigger-value: "{{ inventory_hostname }}"
+
+ip: {{ vipdb }} 
+netmask: 24 
+interface: {{ consul_iface }} 
+
+
+hosting-type: basic 
+
+dcs-type: consul 
+
+dcs-endpoints:
+  - http://127.0.0.1:8500
+
+
+consul-token: "{{ consul_raw_key }}"
+
+
+retry-num: 2
+retry-after: 250  #in milliseconds
+
+
+verbose: false
