@@ -1,13 +1,15 @@
-- name: Install consul
-  hosts: sirius_consul
-  become: yes
-  roles:
-    - consul
+### global
+system_name: "sirius"
 
-- name: Create VG and LVM, install postgres and vip-manager
-  hosts: sirius_postgres
-  become: yes
-  roles:
-    - disks
-    - postgres
-    - vip-manager
+### consul
+dc_name: "sirius"
+consul_ansible_group: "sirius_consul"
+
+pg_data: /pgsql/pg_data
+pg_val: /pgsql/pg_val
+
+patroni_log: /var/log/patroni
+
+patroni_conf: /opt/app/patroni/etc/postgresql.yml
+
+vipdb: 192.168.11.200
