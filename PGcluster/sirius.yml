@@ -1,0 +1,13 @@
+- name: Install consul
+  hosts: sirius_consul
+  become: yes
+  roles:
+    - consul
+
+- name: Create VG and LVM, install postgres and vip-manager
+  hosts: sirius_postgres
+  become: yes
+  roles:
+    - disks
+    - postgres
+    - vip-manager
